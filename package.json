@@ -15,6 +15,7 @@
   "dependencies": {
     "@digirati/canvas-panel-web-components": "^1.0.56",
     "@nakamura196/osd-custom-viewer": "^2.27.0",
+    "leaflet.markercluster": "^1.5.3",
     "openseadragon": "^4.0.0",
     "sass": "^1.59.3",
     "tify": "^0.28.1",
