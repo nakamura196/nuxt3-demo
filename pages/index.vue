@@ -12,6 +12,10 @@ const items = [
     title: "Leaflet",
     to: "map",
   },
+  {
+    title: "Leaflet Marker Cluster",
+    to: "map-cluster",
+  },
 ];
 </script>
 <template>
