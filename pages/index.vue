@@ -16,12 +16,16 @@ const items = [
     title: "Leaflet Marker Cluster",
     to: "map-cluster",
   },
+  {
+    title: "Text Selection with VueUse",
+    to: "textSelection",
+  },
 ];
 </script>
 <template>
   <v-container>
     <ul>
-      <li v-for="(item, key) in items" :key="key">
+      <li class="mb-2" v-for="(item, key) in items" :key="key">
         <NuxtLink :to="item.to">
           {{ item.title }}
         </NuxtLink>
