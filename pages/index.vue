@@ -20,6 +20,14 @@ const items = [
     title: "Text Selection with VueUse",
     to: "textSelection",
   },
+  {
+    title: "OpenSeadragon",
+    to: "osd",
+  },
+  {
+    title: "OpenSeadragon with SvgOverlay",
+    to: "osd-svg",
+  },
 ];
 </script>
 <template>
