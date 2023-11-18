@@ -28,6 +28,10 @@ const items = [
     title: "OpenSeadragon with SvgOverlay",
     to: "osd-svg",
   },
+  {
+    title: "Cytoscape",
+    to: "cytoscape",
+  },
 ];
 </script>
 <template>
