@@ -1,101 +1,84 @@
-<template>
-  <div style="display: none">
-    <slot v-if="ready"></slot>
-  </div>
-</template>
-
-<script>
+<script setup lang="ts">
+import * as L from "leaflet";
+import "leaflet.markercluster/dist/leaflet.markercluster.js";
+// @ts-ignore
+import { MarkerClusterGroup } from "leaflet.markercluster";
+import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
-import {
-  inject,
-  nextTick,
-  onBeforeUnmount,
-  onMounted,
-  provide,
-  ref,
-} from "vue";
-import { propsBinder, remapEvents } from "@vue-leaflet/vue-leaflet/src/utils";
-import {
-  render,
-  setup as layerSetup,
-} from "@vue-leaflet/vue-leaflet/src/functions/layer";
+import { LMap, LTileLayer } from "@vue-leaflet/vue-leaflet";
 
-const props = {
-  options: {
-    type: Object,
-    default() {
-      return {};
-    },
+const zoom = ref(3);
+const centerLatLng = ref<[number, number]>([54, 28]);
+
+const leafletReady = ref(false);
+
+let markerCluster: MarkerClusterGroup | null = null;
+
+const tileProviders = ref([
+  {
+    name: "OpenStreetMap",
+    visible: true,
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   },
+]);
+
+const onLeafletReady = (map: L.Map) => {
+  leafletReady.value = true;
+  initializeMarkerCluster(map);
+  display();
 };
 
-export default {
-  name: "MarkerCluster",
+const initializeMarkerCluster = (map: L.Map) => {
+  if (!markerCluster) {
+    markerCluster = L.markerClusterGroup({
+      removeOutsideVisibleBounds: true,
+      chunkedLoading: true,
+    });
+    map.addLayer(markerCluster);
+  }
+};
 
-  props,
+const display = () => {
+  function r(min: number, max: number) {
+    return Math.random() * (max - min) + min;
+  }
 
-  // emits: ['ready'],
-
-  setup(props, context) {
-    const leafletRef = ref({});
-    const ready = ref(false);
-
-    const addLayerToMainMap = inject("addLayer");
-    const removeLayerFromMainMap = inject("removeLayer");
-
-    provide("canSetParentHtml", () => !!leafletRef.value.getElement());
-    provide(
-      "setParentHtml",
-      (html) => (leafletRef.value.getElement().innerHTML = html)
+  let markers = [];
+  for (let i = 0; i < 5000; i++) {
+    const marker = L.marker(
+      L.latLng(r(53.82477192, 53.92365592), r(27.5078027, 27.70640622))
     );
-    // provide('setIcon', (newIcon) => leafletRef.value.setIcon && leafletRef.value.setIcon(newIcon))
-    provide("addLayer", (layer) => {
-      // replace the provided addLayer function for child components of MarkerCluster so they add to the cluster rather than the map
-      leafletRef.value.addLayer(layer.leafletObject);
-    });
-    provide("removeLayer", (layer) => {
-      leafletRef.value.removeLayer(layer.leafletObject);
-    });
-
-    // const {options, methods} = markerSetup(props, leafletRef, context)
-
-    const { methods } = layerSetup(props, leafletRef, context);
-
-    onMounted(async () => {
-      const { DomEvent, marker } = await import("leaflet/dist/leaflet-src.esm");
-
-      const { MarkerClusterGroup } = await import(
-        "leaflet.markercluster/dist/leaflet.markercluster-src.js"
-      );
-      leafletRef.value = new MarkerClusterGroup(props.options);
-
-      const listeners = remapEvents(context.attrs);
-      DomEvent.on(leafletRef.value, listeners);
-
-      propsBinder(methods, leafletRef.value, props);
-
-      addLayerToMainMap({
-        ...props,
-        ...methods,
-        leafletObject: leafletRef.value,
-      });
-
-      ready.value = true;
-      nextTick(() => context.emit("ready", leafletRef.value));
-    });
-
-    onBeforeUnmount(
-      () =>
-        leafletRef.value &&
-        leafletRef.value._leaflet_id &&
-        removeLayerFromMainMap({ leafletObject: leafletRef.value })
-    );
-
-    return { ready, leafletObject: leafletRef };
-  },
-  render() {
-    return render(this.ready, this.$slots);
-  },
+    marker.bindPopup("Number " + i);
+    markers.push(marker);
+  }
+  markerCluster.addLayers(markers);
 };
 </script>
+<template>
+  <l-map
+    ref="map"
+    :max-zoom="19"
+    :zoom="zoom"
+    :center="centerLatLng"
+    :zoomAnimation="true"
+    :markerZoomAnimation="true"
+    :useGlobalLeaflet="true"
+    :options="{ zoomControl: false }"
+    @ready="onLeafletReady"
+  >
+    <template v-if="leafletReady">
+      <l-tile-layer
+        v-for="tileProvider in tileProviders"
+        :key="tileProvider.name"
+        :name="tileProvider.name"
+        :visible="tileProvider.visible"
+        :url="tileProvider.url"
+        :attribution="tileProvider.attribution"
+        layer-type="base"
+      />
+    </template>
+  </l-map>
+</template>

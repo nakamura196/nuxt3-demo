@@ -32,15 +32,26 @@ const items = [
     title: "Cytoscape",
     to: "cytoscape",
   },
+  {
+    title: "Universal Viewer",
+    href: "uv/?manifest=https://dl.ndl.go.jp/api/iiif/3437686/manifest.json",
+  },
 ];
 </script>
 <template>
   <v-container>
     <ul>
       <li class="mb-2" v-for="(item, key) in items" :key="key">
-        <NuxtLink :to="item.to">
-          {{ item.title }}
-        </NuxtLink>
+        <template v-if="item.href">
+          <a :href="item.href">
+            {{ item.title }}
+          </a>
+        </template>
+        <template v-else>
+          <NuxtLink :to="item.to">
+            {{ item.title }}
+          </NuxtLink>
+        </template>
       </li>
     </ul>
   </v-container>

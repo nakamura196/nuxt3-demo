@@ -1,7 +1,7 @@
 <template>
   <div class="map-test">
     <ClientOnly>
-      <map-test />
+      <MapMarkerCluster />
     </ClientOnly>
   </div>
 </template>

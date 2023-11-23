@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Universal Viewer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/universalviewer@4.0.0/dist/uv.css"
+    />
+    <script
+      type="application/javascript"
+      src="https://cdn.jsdelivr.net/npm/universalviewer@4.0.0/dist/umd/UV.js"
+    ></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="uv" id="uv"></div>
+
+    <script>
+      // URLからクエリパラメータを取得する関数
+      function getQueryParam(param) {
+        // URLSearchParamsオブジェクトを現在のURLのクエリ部分で作成
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // 指定されたパラメータの値を返す
+        return urlParams.get(param);
+      }
+
+      const data = {
+        manifest:
+          getQueryParam("manifest") ||
+          "https://wellcomelibrary.org/iiif/b18035723/manifest",
+        // embedded: true, // needed for codesandbox frame
+      };
+
+      uv = UV.init("uv", data);
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var $UV = document.getElementById("uv");
+
+        function resize() {
+          $UV.setAttribute("style", "width:" + window.innerWidth + "px");
+          $UV.setAttribute("style", "height:" + window.innerHeight + "px");
+        }
+
+        document.addEventListener("resize", function () {
+          resize();
+        });
+
+        resize();
+      });
+    </script>
+  </body>
+</html>

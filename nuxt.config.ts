@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
   ],
   css: ["vuetify/lib/styles/main.sass"],
+  ssr: false,
   build: {
     transpile: ["vuetify"],
   },
