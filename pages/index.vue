@@ -40,8 +40,8 @@ const items = [
 </script>
 <template>
   <v-container>
-    <ul>
-      <li class="mb-2" v-for="(item, key) in items" :key="key">
+    <v-list>
+      <v-list-item class="mb-2" v-for="(item, key) in items" :key="key">
         <template v-if="item.href">
           <a :href="item.href">
             {{ item.title }}
@@ -52,7 +52,7 @@ const items = [
             {{ item.title }}
           </NuxtLink>
         </template>
-      </li>
-    </ul>
+      </v-list-item>
+    </v-list>
   </v-container>
 </template>
