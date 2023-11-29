@@ -27,6 +27,6 @@
     "sass": "^1.69.5",
     "svg-overlay": "github:openseadragon/svg-overlay",
     "tify": "^0.29.2",
-    "vuetify": "^3.4.3"
+    "vuetify": "^3.4.4"
   }
 }
