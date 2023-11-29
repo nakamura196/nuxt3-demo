@@ -39,7 +39,17 @@ const items = [
     title: "Universal Viewer",
     href: `${baseURL}uv/index.html?manifest=https://dl.ndl.go.jp/api/iiif/3437686/manifest.json`
   },
+  {
+    title: "Blog (Nuxt Content and Netlify CMS)",
+    to: "blog"
+  },
 ];
+
+useHead({
+  script: [
+    { src: "https://identity.netlify.com/v1/netlify-identity-widget.js" },
+  ],
+});
 </script>
 <template>
   <v-container>
