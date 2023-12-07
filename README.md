@@ -2,6 +2,12 @@
 
 Sample Repository for Nuxt3 Including Examples of Various Library Usages
 
+<img src="public/assets/demo.png" width="100%" title="demo">
+
+## 🌐 Website
+
+[Visit the demo page](https://nakamura196.github.io/nuxt3-demo/) to try it out.
+
 ## Setup
 
 Make sure to install the dependencies:
