@@ -1,10 +1,16 @@
 <script setup lang="ts">
-const baseURL = "/";
+const { $config } = useNuxtApp();
+const baseURL = $config.app.baseURL;
 
+const items = await queryContent("/item/").sort({ date: -1 }).find();
+
+/*
 const items = [
   {
     title: "Canvas Panel",
     to: "canvas-panel",
+    path: `${baseURL}/assets/cytoscape_add.webp`,
+    date: "2023-12-07",
   },
   {
     title: "Tify",
@@ -47,6 +53,7 @@ const items = [
     to: "cytoscape_add",
   },
 ];
+*/
 
 useHead({
   script: [
@@ -56,19 +63,37 @@ useHead({
 </script>
 <template>
   <v-container>
-    <v-list>
-      <v-list-item class="mb-2" v-for="(item, key) in items" :key="key">
-        <template v-if="item.href">
-          <a :href="item.href">
-            {{ item.title }}
-          </a>
-        </template>
-        <template v-else>
-          <NuxtLink :to="item.to">
-            {{ item.title }}
-          </NuxtLink>
-        </template>
-      </v-list-item>
-    </v-list>
+    <v-row>
+      <v-col cols="6" sm="3" v-for="item in items">
+        <v-card>
+          <template v-if="item.href">
+            <v-img style="background-color: lightgray;"
+              :height="150" :src="`${baseURL}/${item.media}`"></v-img>
+          </template>
+          <template v-else>
+              <NuxtLink :to="item.to">
+                <v-img style="background-color: lightgray;"
+              :height="150" :src="`${baseURL}/${item.media}`"></v-img>
+              </NuxtLink>
+            </template>
+          <v-card-text>
+            <template v-if="item.href">
+              <a :href="`${baseURL}/${item.href}`">
+                {{ item.title }}
+              </a>
+            </template>
+            <template v-else>
+              <NuxtLink :to="item.to">
+                {{ item.title }}
+              </NuxtLink>
+            </template>
+
+            <div class="mt-4">
+              <v-chip color="primary" dark>{{ item.date?.split("T")[0] }}</v-chip>
+            </div>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </template>

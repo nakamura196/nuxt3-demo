@@ -7,8 +7,8 @@ backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
 
-media_folder: public/img
-public_folder: /img
+media_folder: public/assets
+public_folder: /assets
 
 collections:
   - name: 'blog'
@@ -24,3 +24,17 @@ collections:
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+
+  - name: 'item'
+    label: 'Item'
+    folder: 'content/item'
+    format: 'frontmatter'
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'To', name: 'to', widget: 'string', required: false }
+      - { label: 'Href', name: 'href', widget: 'string', required: false }
+      - { label: "Media", name: "media", widget: "file", media_library: { config: { multiple: false } }, required: false }
