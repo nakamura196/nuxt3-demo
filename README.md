@@ -2,7 +2,9 @@
 
 Sample Repository for Nuxt3 Including Examples of Various Library Usages
 
-<img src="public/assets/demo.webp" width="100%" title="demo">
+<a href="https://nakamura196.github.io/nuxt3-demo/">
+    <img src="public/assets/demo.webp" width="100%" title="demo">
+</a>
 
 ## 🌐 Website
 
