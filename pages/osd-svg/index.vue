@@ -2,9 +2,13 @@
 import OpenSeadragon from 'openseadragon'
 const { $OpenSeadragon } = useNuxtApp();
 
+const { $config } = useNuxtApp();
+const baseURL = $config.app.baseURL;
+
 const config: any = {
   sequenceMode: true,
   id: "osd",
+  prefixUrl: `${baseURL}/images/`,
   tileSources: [
     "https://dl.ndl.go.jp/api/iiif/1303379/R0000001/info.json"
   ],
