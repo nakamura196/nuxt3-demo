@@ -1,6 +1,5 @@
 <script setup lang="ts">
-
-const baseURL = "/"
+const baseURL = "/";
 
 const items = [
   {
@@ -37,11 +36,15 @@ const items = [
   },
   {
     title: "Universal Viewer",
-    href: `${baseURL}uv/index.html?manifest=https://dl.ndl.go.jp/api/iiif/3437686/manifest.json`
+    href: `${baseURL}uv/index.html?manifest=https://dl.ndl.go.jp/api/iiif/3437686/manifest.json`,
   },
   {
     title: "Blog (Nuxt Content and Netlify CMS)",
-    to: "blog"
+    to: "blog",
+  },
+  {
+    title: "Cytoscape (Add nodes and edges)",
+    to: "cytoscape_add",
   },
 ];
 
