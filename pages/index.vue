@@ -65,17 +65,23 @@ useHead({
   <v-container>
     <v-row>
       <v-col cols="6" sm="3" v-for="item in items">
-        <v-card>
+        <v-card variant="flat">
           <template v-if="item.href">
-            <v-img style="background-color: lightgray;"
-              :height="150" :src="`${baseURL}/${item.media}`"></v-img>
+            <v-img
+              style="background-color: lightgray"
+              :height="150"
+              :src="`${baseURL}/${item.media}`"
+            ></v-img>
           </template>
           <template v-else>
-              <NuxtLink :to="item.to">
-                <v-img style="background-color: lightgray;"
-              :height="150" :src="`${baseURL}/${item.media}`"></v-img>
-              </NuxtLink>
-            </template>
+            <NuxtLink :to="item.to">
+              <v-img
+                style="background-color: lightgray"
+                :height="150"
+                :src="`${baseURL}/${item.media}`"
+              ></v-img>
+            </NuxtLink>
+          </template>
           <v-card-text>
             <template v-if="item.href">
               <a :href="`${baseURL}/${item.href}`">
@@ -89,7 +95,9 @@ useHead({
             </template>
 
             <div class="mt-4">
-              <v-chip color="primary" dark>{{ item.date?.split("T")[0] }}</v-chip>
+              <v-chip color="primary" dark>{{
+                item.date?.split("T")[0]
+              }}</v-chip>
             </div>
           </v-card-text>
         </v-card>

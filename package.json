@@ -8,26 +8,26 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/content": "^2.9.0",
+    "@nuxt/content": "^2.12.0",
     "@types/leaflet": "^1.9.8",
     "@types/openseadragon": "^3.0.10",
     "@vue-leaflet/vue-leaflet": "^0.10.1",
-    "@vueuse/core": "^10.7.0",
-    "@vueuse/nuxt": "^10.7.0",
+    "@vueuse/core": "^10.7.2",
+    "@vueuse/nuxt": "^10.7.2",
     "leaflet": "^1.9.4",
-    "nuxt": "3.8.2"
+    "nuxt": "3.10.1"
   },
   "dependencies": {
-    "@digirati/canvas-panel-web-components": "^1.0.57",
+    "@digirati/canvas-panel-web-components": "^1.0.58",
     "@nakamura196/osd-custom-viewer": "^2.27.0",
     "@types/cytoscape": "^3.19.16",
     "@types/leaflet.markercluster": "^1.5.4",
-    "cytoscape": "^3.27.0",
+    "cytoscape": "^3.28.1",
     "leaflet.markercluster": "^1.5.3",
     "openseadragon": "^4.1.0",
-    "sass": "^1.69.5",
+    "sass": "^1.70.0",
     "svg-overlay": "github:openseadragon/svg-overlay",
     "tify": "^0.29.2",
-    "vuetify": "^3.4.6"
+    "vuetify": "^3.5.3"
   }
 }
