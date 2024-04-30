@@ -6,6 +6,6 @@ export default defineNuxtConfig({
     transpile: ["vuetify"],
   },
   app: {
-    baseURL: "/nuxt3-demo"
-  }
+    baseURL: "/nuxt3-demo",
+  },
 });

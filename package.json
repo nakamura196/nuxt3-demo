@@ -18,6 +18,7 @@
     "nuxt": "3.10.1"
   },
   "dependencies": {
+    "@balkangraph/orgchart.js": "^8.14.36",
     "@digirati/canvas-panel-web-components": "^1.0.58",
     "@nakamura196/osd-custom-viewer": "^2.27.0",
     "@types/cytoscape": "^3.19.16",
