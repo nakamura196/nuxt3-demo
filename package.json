@@ -29,6 +29,7 @@
     "sass": "^1.70.0",
     "svg-overlay": "github:openseadragon/svg-overlay",
     "tify": "^0.29.2",
-    "vuetify": "^3.5.3"
+    "vuetify": "^3.5.3",
+    "wikidata-entity-lookup": "^2.1.0"
   }
 }
