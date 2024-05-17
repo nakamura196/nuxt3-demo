@@ -23,6 +23,9 @@ dependencies:
   cytoscape:
     specifier: ^3.28.1
     version: 3.29.2
+  jps-entity-lookup:
+    specifier: github:nakamura196/jps-entity-lookup
+    version: github.com/nakamura196/jps-entity-lookup/b28215ec97e0ac77afcdfe98119beba590f74379
   leaflet.markercluster:
     specifier: ^1.5.3
     version: 1.5.3(leaflet@1.9.4)
@@ -38,6 +41,9 @@ dependencies:
   tify:
     specifier: ^0.29.2
     version: 0.29.2
+  viaf-entity-lookup:
+    specifier: ^2.1.0
+    version: 2.1.0
   vuetify:
     specifier: ^3.5.3
     version: 3.6.6(vue@3.4.27)
@@ -8397,6 +8403,10 @@ packages:
       vfile-message: 4.0.2
     dev: true
 
+  /viaf-entity-lookup@2.1.0:
+    resolution: {integrity: sha512-AB8p2aUNKsZn9JQhIGLK9q+U+5IRq4wvKCQr1JdMkrK+DdxTBWwDH//3V+tVV4mORxzW/FCgVFEQbzTvyvz80g==}
+    dev: false
+
   /vite-hot-client@0.2.3(vite@5.0.12):
     resolution: {integrity: sha512-rOGAV7rUlUHX89fP2p2v0A2WWvV3QMX2UYq0fRqsWSvFvev4atHWqjwGoKaZT1VTKyLGk533ecu3eyd0o59CAg==}
     peerDependencies:
@@ -8889,6 +8899,14 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: true
+
+  github.com/nakamura196/jps-entity-lookup/b28215ec97e0ac77afcdfe98119beba590f74379:
+    resolution: {tarball: https://codeload.github.com/nakamura196/jps-entity-lookup/tar.gz/b28215ec97e0ac77afcdfe98119beba590f74379}
+    name: jps-entity-lookup
+    version: 0.0.0-development
+    prepare: true
+    requiresBuild: true
+    dev: false
 
   github.com/openseadragon/svg-overlay/31e908c3da521dd439dad46b4aba4b842a4880bc:
     resolution: {tarball: https://codeload.github.com/openseadragon/svg-overlay/tar.gz/31e908c3da521dd439dad46b4aba4b842a4880bc}

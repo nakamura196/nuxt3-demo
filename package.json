@@ -24,11 +24,13 @@
     "@types/cytoscape": "^3.19.16",
     "@types/leaflet.markercluster": "^1.5.4",
     "cytoscape": "^3.28.1",
+    "jps-entity-lookup": "github:nakamura196/jps-entity-lookup",
     "leaflet.markercluster": "^1.5.3",
     "openseadragon": "^4.1.0",
     "sass": "^1.70.0",
     "svg-overlay": "github:openseadragon/svg-overlay",
     "tify": "^0.29.2",
+    "viaf-entity-lookup": "^2.1.0",
     "vuetify": "^3.5.3",
     "wikidata-entity-lookup": "^2.1.0"
   }
