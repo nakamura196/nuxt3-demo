@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="primary" dense dark flat>
+  <v-app-bar color="primary" density="compact" flat>
     <v-app-bar-title>
       <nuxt-link
         :to="{ name: 'index' }"

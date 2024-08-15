@@ -70,7 +70,11 @@ useHead({
             <v-img
               style="background-color: lightgray"
               :height="150"
-              :src="`${baseURL}/${item.media}`"
+              :src="
+                item.media
+                  ? `${baseURL}/${item.media}`
+                  : 'https://nuxt.com/assets/design-kit/icon-green.svg'
+              "
             ></v-img>
           </template>
           <template v-else>
@@ -78,7 +82,11 @@ useHead({
               <v-img
                 style="background-color: lightgray"
                 :height="150"
-                :src="`${baseURL}/${item.media}`"
+                :src="
+                  item.media
+                    ? `${baseURL}/${item.media}`
+                    : 'https://nuxt.com/assets/design-kit/icon-green.svg'
+                "
               ></v-img>
             </NuxtLink>
           </template>
