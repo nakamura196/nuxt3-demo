@@ -27,7 +27,7 @@ jobs:
           node-version: latest
 
       - name: Install dependencies
-        run: npm i
+        run: npm i --force
 
       - name: Static HTML export with Nuxt
         run: npm run generate
