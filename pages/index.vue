@@ -103,8 +103,12 @@ useHead({
             </template>
 
             <div class="mt-4">
-              <v-chip color="primary" dark>{{
+              <v-chip color="primary" dark class="ma-1">{{
                 item.date?.split("T")[0]
+              }}</v-chip>
+
+              <v-chip color="success" dark class="ma-1" v-if="item.updated">{{
+                item.updated?.split("T")[0]
               }}</v-chip>
             </div>
           </v-card-text>

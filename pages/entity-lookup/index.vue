@@ -5,6 +5,8 @@ import wikidataLookup from "wikidata-entity-lookup";
 import viafLookup from "viaf-entity-lookup";
 // @ts-ignore
 import jpsLookup from "jps-entity-lookup";
+// @ts-ignore
+import hutimeLookup from "hutime-entity-lookup";
 
 // 定数定義
 const HEADERS = [
@@ -17,6 +19,7 @@ const REPOSITORIES = [
   "https://github.com/cwrc/wikidata-entity-lookup",
   "https://github.com/cwrc/viaf-entity-lookup",
   "https://github.com/nakamura196/jps-entity-lookup",
+  "https://github.com/nakamura196/hutime-entity-lookup",
 ];
 
 const TYPES = [
@@ -35,6 +38,10 @@ const TYPES = [
   {
     title: "Title",
     value: "findTitle",
+  },
+  {
+    title: "RS",
+    value: "findRS",
   },
 ];
 
@@ -63,6 +70,11 @@ const config = ref<Item[]>([
     results: [],
   },
   {
+    name: "HuTime",
+    search: hutimeLookup,
+    results: [],
+  },
+  {
     name: "Wikidata",
     search: wikidataLookup,
     results: [],
@@ -77,8 +89,17 @@ const config = ref<Item[]>([
 // 検索関数
 const search = async () => {
   for (const source of config.value) {
+    // @ts-ignore
+    const search: {
+      [key: string]: (query: string) => Promise<Entity[]>;
+    } = source.search;
+    // console.log({ search });
     try {
-      const result = await source.search[type.value](query.value);
+      if (!search[type.value]) {
+        console.error(`Error: ${source.name} does not support ${type.value}`);
+        continue;
+      }
+      const result = await search[type.value](query.value);
       source.results = result;
     } catch (error) {
       console.error(`Error fetching data from ${source.name}:`, error);
